@@ -1,2 +1,38 @@
-# xledpwm
-Keyboard LED brightness control via pulse-width modulation. (Yes, it really works.)
+# xledpwm: Control keyboard LED brightness via pulse-width modulation
+ 
+## Arguments:
+| --display, -d    | X display to use (default :0.0)                            |
+| --led, -l        | LED to control (required; takes numeric arguments as xset) |
+| --brightness, -b | Brightness level (1-100, not with -f)                      |
+| --fade, -f       | Fade LED in and out (not with -b)                          |
+
+## Install, set up, run
+```
+$ git clone https://github.com/aaron-em/xledpwm && cd xledpwm
+$ make
+$ ./xledpwm -l 3 -f
+```
+
+## Commentary
+
+I wrote this with the idea of using it to biff mail, with the LED getting brighter as more unread messages piled up. I never ended up implementing that, but this fell out of it, so that's neat, right?
+
+Heavily based on xset 1.2.1, which is copyright 1998 The Open Group.  Provided as-is; if it breaks, you get to keep both pieces.
+
+Some older 2.6 kernels have a bug in which the USB HID driver's control queue is shorter than it really should be.  This program sends a lot of commands to the keyboard.  If your kernel has the bug and you use a USB keyboard, this program will probably tickle the bug; you'll see "...control queue full" messages on the console, and will no longer be able to control any keyboard LEDs by any means. (But you can still type.)  Unplugging the keyboard will clear the stuffed queue. Upgrading your kernel will solve the problem.
+
+This is a proof of concept, meaning it's not all that good. There's not much difference visible in the lower brightness levels, because timing resolution at microsecond levels kind of sucks; if I shorten the duty cycle any further, the result is not lower brightness but perceptible flicker, which definitely sucks.
+
+If you have reliable nanosecond-level timing, it will no doubt improve this program a great deal; if the main loop were 20us wide instead of 20ms as now, you'd probably be able to dim the LED to imperceptibility without showing any flicker.
+
+As things are, there's still a bit of flicker in the fade mode which I haven't been able to expunge; this is probably less to do with any timing issues than with the fact that I kinda suck at math.
+
+Sadly, I don't have root on this box, so I can't test that out for myself; at nice 0, even microsecond-level timing isn't all that reliable. (I'm not sure whether it'd be any better at nice -20; you might need a real-time kernel or something. I'm not really a Linux or a C hacker, so I don't really know.)
+
+*Update, 2015-02-13: I do have root on this box, but it doesn't run Linux natively and I don't really feel like setting up a whole new box just to test one thing. Try it out for yourself!*
+
+*Update, 2015-02-13: Also, it's occurred to me in the interim that more probably depends on the X server than on the code telling it what to do, so root probably isn't going to help.*
+
+*Speaking of things which occurred to me in the interim, I may well have put myself in serious contention to become the world champion of overengineering, at least if you count all the subsystems, binaries, and lines of code I'm leveraging here to turn a single LED on and off.*
+
+Hacked together in April 2013 by Aaron Miller (me@aaron-miller.me). As far as I'm concerned, this is MIT-licensed and yours to do with as you please. Share and enjoy; if you do something cool with this, I'd love to hear about it.
