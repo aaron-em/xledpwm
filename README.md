@@ -1,10 +1,10 @@
 # xledpwm: Control keyboard LED brightness via pulse-width modulation
  
 ## Arguments:
-| --display, -d    | X display to use (default :0.0)                            |
-| --led, -l        | LED to control (required; takes numeric arguments as xset) |
-| --brightness, -b | Brightness level (1-100, not with -f)                      |
-| --fade, -f       | Fade LED in and out (not with -b)                          |
+* --display, -d: X display to use (default :0.0): 
+* --led, -l: LED to control (required; takes numeric arguments as xset) 
+* --brightness, -b: Brightness level (1-100, not with -f): 
+* --fade, -f: Fade LED in and out (not with -b): 
 
 ## Install, set up, run
 ```
