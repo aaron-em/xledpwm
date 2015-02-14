@@ -36,4 +36,4 @@ Sadly, I don't have root on this box, so I can't test that out for myself; at ni
 
 /Speaking of things which occurred to me in the interim, I may well have put myself in serious contention to become the world champion of overengineering, at least if you count all the subsystems, binaries, and lines of code I'm leveraging here to turn a single LED on and off./
 
-Hacked together in April 2013 by Aaron Miller ([[me@aaron-miller.me]]). As far as I'm concerned, this is MIT-licensed and yours to do with as you please. Share and enjoy; if you do something cool with this, I'd love to hear about it.
+Hacked together in April 2013 by Aaron Miller ([[mailto:me@aaron-miller.me][me@aaron-miller.me]]). As far as I'm concerned, this is MIT-licensed and yours to do with as you please. Share and enjoy; if you do something cool with this, I'd love to hear about it.
