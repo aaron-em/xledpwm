@@ -1,19 +1,21 @@
-# xledpwm: Control keyboard LED brightness via pulse-width modulation
+#+TITLE: xledpwm
+
+* xledpwm
+Control keyboard LED brightness via pulse-width modulation
  
-## Arguments:
-* --display, -d: X display to use (default :0.0): 
-* --led, -l: LED to control (required; takes numeric arguments as xset) 
-* --brightness, -b: Brightness level (1-100, not with -f): 
-* --fade, -f: Fade LED in and out (not with -b): 
+** Options:
+| --display, -d    | X display to use (default :0.0)                            |
+| --led, -l        | LED to control (required; takes numeric arguments as xset) |
+| --brightness, -b | Brightness level (1-100, not with -f)                      |
+| --fade, -f       | Fade LED in and out (not with -b)                          |
 
-## Install, set up, run
-```
-$ git clone https://github.com/aaron-em/xledpwm && cd xledpwm
-$ make
-$ ./xledpwm -l 3 -f
-```
+** Install, set up, run
 
-## Commentary
+: $ git clone https://github.com/aaron-em/xledpwm && cd xledpwm
+: $ make
+: $ ./xledpwm -l 3 -f
+ 
+** Commentary
 
 I wrote this with the idea of using it to biff mail, with the LED getting brighter as more unread messages piled up. I never ended up implementing that, but this fell out of it, so that's neat, right?
 
@@ -29,10 +31,10 @@ As things are, there's still a bit of flicker in the fade mode which I haven't b
 
 Sadly, I don't have root on this box, so I can't test that out for myself; at nice 0, even microsecond-level timing isn't all that reliable. (I'm not sure whether it'd be any better at nice -20; you might need a real-time kernel or something. I'm not really a Linux or a C hacker, so I don't really know.)
 
-*Update, 2015-02-13: I do have root on this box, but it doesn't run Linux natively and I don't really feel like setting up a whole new box just to test one thing. Try it out for yourself!*
+/Update, 2015-02-13: I do have root on this box, but it doesn't run Linux natively and I don't really feel like setting up a whole new box just to test one thing. Try it out for yourself!/
 
-*Update, 2015-02-13: Also, it's occurred to me in the interim that more probably depends on the X server than on the code telling it what to do, so root probably isn't going to help.*
+/Update, 2015-02-13: Also, it's occurred to me in the interim that more probably depends on the X server than on the code telling it what to do, so root probably isn't going to help./
 
-*Speaking of things which occurred to me in the interim, I may well have put myself in serious contention to become the world champion of overengineering, at least if you count all the subsystems, binaries, and lines of code I'm leveraging here to turn a single LED on and off.*
+/Speaking of things which occurred to me in the interim, I may well have put myself in serious contention to become the world champion of overengineering, at least if you count all the subsystems, binaries, and lines of code I'm leveraging here to turn a single LED on and off./
 
 Hacked together in April 2013 by Aaron Miller (me@aaron-miller.me). As far as I'm concerned, this is MIT-licensed and yours to do with as you please. Share and enjoy; if you do something cool with this, I'd love to hear about it.
